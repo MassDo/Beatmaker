@@ -1,6 +1,98 @@
 * {
-  margin: 5px;
-  padding: 5px;
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+}
+.body {
+  font-family: sans-serif;
+}
+.sequencer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+i,
+svg {
+  pointer-events: none;
+}
+
+/* TRACK */
+.kick-track,
+.snare-track,
+.hihat-track {
+  display: flex;
+  width: 70%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5rem;
+}
+/* CONTROLS into trackpad */
+.controls {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: wrap;
+  margin: 0rem 2rem;
+}
+.controls button {
+  padding: 1rem;
+  border: none;
+  background-color: rgb(109, 102, 102);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+select {
+  pad: 1rem;
+  font-size: 1rem;
+}
+/* PAD into trackpad */
+.kick,
+.snare,
+.hihat {
+  display: flex;
+}
+.kick-pad,
+.snare-pad,
+.hihat-pad {
+  width: 5rem;
+  height: 5rem;
+  margin: 1rem 0.5rem;
+  cursor: pointer;
+}
+.kick-pad {
+  background-color: #a1ccf1;
+}
+.snare-pad {
+  background-color: #dd94a7;
+}
+.hihat-pad {
+  background-color: #ebe595;
+}
+.kick-pad.active {
+  background-color: #0b88f5;
+}
+.snare-pad.active {
+  background-color: #df0741;
+}
+.hihat-pad.active {
+  background-color: #f5e509;
+}
+.pad {
+  transition: all 0.5s ease;
+}
+/* PLAY BUTTON */
+.play {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background-color: rgb(109, 102, 102);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 3rem;
 }
