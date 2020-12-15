@@ -48,6 +48,13 @@ svg {
   cursor: pointer;
   transition: all 0.5s ease;
 }
+.mute {
+  border-radius: 2rem;
+}
+.mute.active {
+  background-color: #e4dee0;
+  color: black;
+}
 select {
   pad: 1rem;
   font-size: 1rem;
@@ -70,7 +77,7 @@ select {
   background-color: #a1ccf1;
 }
 .snare-pad {
-  background-color: #dd94a7;
+  background-color: #daaeba;
 }
 .hihat-pad {
   background-color: #c2bf81;
@@ -91,14 +98,36 @@ select {
 .play {
   padding: 1rem 2rem;
   font-size: 1.5rem;
-  background-color: rgb(109, 102, 102);
+  background-color: rgb(129, 108, 108);
   color: rgb(74, 245, 40);
   border: none;
+  border-radius: 1rem;
   cursor: pointer;
   margin-top: 3rem;
+  transition: all 0.5s ease;
 }
 .play.active {
   color: rgb(252, 25, 25);
+}
+/* TEMPO RANGE */
+.tempo {
+  margin: 3rem;
+  width: 30%;
+}
+.tempo-slider {
+  padding: 0.1rem;
+  appearance: none;
+  margin: 1rem 0rem;
+  width: 100%;
+  position: relative;
+  background-color: rgb(128, 121, 121);
+  cursor: pointer;
+  border-radius: 1rem;
+}
+.tempo p {
+  font-size: 1.5rem;
+  margin: 1rem;
+  text-align: center;
 }
 /* ANIMATION */
 @keyframes playTrack {
