@@ -8,6 +8,7 @@ class Drumkit {
     this.index = 0;
     this.bpm = 120;
     this.isPlaying = null;
+    this.selects = document.querySelectorAll("select");
   }
   activatePad() {
     console.log(this);
@@ -44,35 +45,65 @@ class Drumkit {
   start() {
     // actions when click on play button
     const interval = 60000 / this.bpm;
-    if (!this.isPlaying) {
+    if (this.isPlaying) {
+      // we stop the interval play and reset to null the play info
+      clearInterval(this.isPlaying);
+      this.isPlaying = null;
+    } else {
       // if not playing we lauch the play
       this.isPlaying = setInterval(() => {
         this.repeat();
       }, interval);
-    } else {
-      // we stop the interval play and reset to null the play info
-      clearInterval(this.isPlaying);
-      this.isPlaying = null;
     }
   }
   updateButton() {
-    if (!this.isPlaying) {
+    if (this.isPlaying) {
       this.playButton.innerText = "Play";
+      this.playButton.classList.remove("active");
     } else {
       this.playButton.innerText = "Stop";
+      this.playButton.classList.add("active");
+    }
+  }
+  changeSound(e) {
+    // récupère la 'value' de l'option de l'e.target
+    console.log(e.target.name, e.target.value);
+    const soundFamily = e.target.name;
+    const soundType = e.target.value;
+    switch (soundFamily) {
+      case "kick-select":
+        this.kickAudio.src = soundType;
+        break;
+
+      case "snare-select":
+        this.snareAudio.src = soundType;
+        break;
+
+      case "hihat-select":
+        this.hihatAudio.src = soundType;
+        break;
     }
   }
 }
 
-// EVENT
 const drumKit = new Drumkit();
+
+// EVENT //
 // play button
 drumKit.playButton.addEventListener("click", () => {
-  drumKit.start();
   drumKit.updateButton();
+  drumKit.start();
 });
 // pad activation and animation
 drumKit.pads.forEach((p) => {
   p.addEventListener("click", drumKit.activatePad);
   p.addEventListener("animationend", drumKit.resetAnimation);
+});
+// choose differents sounds
+drumKit.selects.forEach((select) => {
+  select.addEventListener("change", (e) => {
+    console.log(e);
+    drumKit.changeSound(e);
+    // faire la méthode changeSound(e)
+  });
 });
